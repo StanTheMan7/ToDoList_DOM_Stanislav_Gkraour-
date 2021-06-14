@@ -31,7 +31,7 @@
 
 
 // import "./elements.js"
-import "./elements.js" 
+import {h1Elem , myForm, inputElem ,  buttonElem , icon, divElem ,ulElem } from "./elements.js" 
 /* -------------------------------------------------------------------------- */
 /*                               //! Selecotors                               */
 /* -------------------------------------------------------------------------- */
@@ -49,16 +49,16 @@ import "./elements.js"
 /* -------------------------------------------------------------------------- */
 /*                               // ! Functions                               */
 /* -------------------------------------------------------------------------- */
-let inputElem = document.querySelector('.todo-input');
-let buttonElem= document.querySelector('.todo-button')
-let ulElem = document.querySelector('.todo-list')
+// let inputElem = document.querySelector('.todo-input');
+// let buttonElem= document.querySelector('.todo-button');
+// let ulElem = document.querySelector('.todo-list');
 
 
 
 let addTodo = (event) => {
     event.preventDefault();
     // create divtodo
-    let todoDiv = document.createElement('div');
+    let todoDiv= document.createElement('div');
     todoDiv.classList.add('todo');
     // create li 
     let newTodo = document.createElement('li')
@@ -67,43 +67,53 @@ let addTodo = (event) => {
     todoDiv.appendChild(newTodo)
     // check mark button
     let completedButton = document.createElement('button');
-    completedButton.innerHTML = '<i class ="fas fa-check"></i>';
-    completedButton.classList.add('trash-btn')
+    completedButton.innerHTML = '<i class = "fas fa-check"> </i>';
+    completedButton.classList.add('completed-btn')
     todoDiv.appendChild(completedButton)
     
 
     let trashButton = document.createElement('button')
-    trashButton.innerHTML='<i class = "fas fa-trash"> </i>';
-    trashButton.classList.add("complete-btn");
+    trashButton.innerHTML='<i class ="fas fa-trash"></i>';
+    trashButton.classList.add("trash-btn");
     todoDiv.appendChild(trashButton);
+    console.log(trashButton);
     // append 
 
     ulElem.appendChild(todoDiv)
     // clear input
     inputElem.value = ''
-    // let todo =  todoDiv.appendChild(document.createElement('li'))
-    // todo.innerText = todoInput.value
-
-    // let completedButton = document.createElement('button')
-    // completedButton.innerHTML= '<i class = "fas fa-check" > </i>';
-    // completedButton.classList.add( "complete-btn");
-    // todoDiv.appendChild(completedButton);
-
+    let changeButton = document.createElement('button');
+    changeButton.innerHTML ='<i class="fas fa-save"></i>';
+    changeButton.classList.add('change-btn')
+    todoDiv.appendChild(changeButton)
+    changeButton.addEventListener('dblclick',() => {
+        newTodo.innerText= '';
+        let newInput = document.createElement('input');
+        todoDiv.appendChild(newInput);
+        newInput.addEventListener('keyup', (e)=> {
+            if(e.keyCode == 13 ){
+                newTodo.innerText = newInput.value;
+                newInput.remove()
+            }
+        })
+    })
 }
 
 buttonElem.addEventListener('click', (event)=> {
     addTodo(event);
 })
 
-let deleteCheck = (e) => {
-let item = e.target
-// delete todo
-if (item.classList[0] === 'trash-btn'){
-item.remove();
-}az
 
-}
+ulElem.addEventListener('click', (e)=>{
+    if(e.target.classList[0] === "trash-btn" ){
+        e.target.parentElement.remove()
+    }else if(e.target.classList[0] ==="completed-btn"){
+        e.target.parentElement.classList.toggle("completed")
+    }
+});
 
-ulElem.addEventListener('click ', (event) => {
-deleteCheck(event)
-})
+
+
+
+
+

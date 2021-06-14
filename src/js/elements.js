@@ -34,14 +34,15 @@ divElem.className = 'todo-container'
 
 let ulElem =  document.createElement('ul');
 ulElem.className = 'todo-list';
+console.log(ulElem);
 
-let todoDiv = document.createElement('div');
-todoDiv.className = 'todo';
+
 
 // let btnDelete = document.createElement('button');
 // todoDiv.appendChild(btnDelete)
 // let btnChecked  = document.createElement('button');
 // todoDiv.appendChild(btnChecked)
+
 
 
 
@@ -56,10 +57,10 @@ myForm.appendChild(buttonElem);
 buttonElem.appendChild(icon);
 body.appendChild(divElem);
 divElem.appendChild(ulElem);
-ulElem.appendChild(todoDiv)
 
 
 
 
+export {h1Elem , myForm, inputElem ,  buttonElem , icon, divElem ,ulElem } ;
 
 // todoDiv.appendChild(liElem);
