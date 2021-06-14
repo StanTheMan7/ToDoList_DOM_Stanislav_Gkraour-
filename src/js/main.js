@@ -29,3 +29,81 @@
 // - Rajoutez un mode "sombre" pour le design. (comme sur facebook)
 // - faire un "drap and drog" sur les tâches. (voir sur internet)
 
+
+// import "./elements.js"
+import "./elements.js" 
+/* -------------------------------------------------------------------------- */
+/*                               //! Selecotors                               */
+/* -------------------------------------------------------------------------- */
+
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                             //! Event Listeners                            */
+/* -------------------------------------------------------------------------- */
+
+
+/* -------------------------------------------------------------------------- */
+/*                               // ! Functions                               */
+/* -------------------------------------------------------------------------- */
+let inputElem = document.querySelector('.todo-input');
+let buttonElem= document.querySelector('.todo-button')
+let ulElem = document.querySelector('.todo-list')
+
+
+
+let addTodo = (event) => {
+    event.preventDefault();
+    // create divtodo
+    let todoDiv = document.createElement('div');
+    todoDiv.classList.add('todo');
+    // create li 
+    let newTodo = document.createElement('li')
+    newTodo.innerText = inputElem.value
+    newTodo.classList.add('todo-item')
+    todoDiv.appendChild(newTodo)
+    // check mark button
+    let completedButton = document.createElement('button');
+    completedButton.innerHTML = '<i class ="fas fa-check"></i>';
+    completedButton.classList.add('trash-btn')
+    todoDiv.appendChild(completedButton)
+    
+
+    let trashButton = document.createElement('button')
+    trashButton.innerHTML='<i class = "fas fa-trash"> </i>';
+    trashButton.classList.add("complete-btn");
+    todoDiv.appendChild(trashButton);
+    // append 
+
+    ulElem.appendChild(todoDiv)
+    // clear input
+    inputElem.value = ''
+    // let todo =  todoDiv.appendChild(document.createElement('li'))
+    // todo.innerText = todoInput.value
+
+    // let completedButton = document.createElement('button')
+    // completedButton.innerHTML= '<i class = "fas fa-check" > </i>';
+    // completedButton.classList.add( "complete-btn");
+    // todoDiv.appendChild(completedButton);
+
+}
+
+buttonElem.addEventListener('click', (event)=> {
+    addTodo(event);
+})
+
+let deleteCheck = (e) => {
+let item = e.target
+// delete todo
+if (item.classList[0] === 'trash-btn'){
+item.remove();
+}az
+
+}
+
+ulElem.addEventListener('click ', (event) => {
+deleteCheck(event)
+})
