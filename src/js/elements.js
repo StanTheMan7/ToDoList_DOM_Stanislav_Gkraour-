@@ -36,7 +36,28 @@ let ulElem =  document.createElement('ul');
 ulElem.className = 'todo-list';
 console.log(ulElem);
 
+let divSelect = document.createElement('div');
+divSelect.className = 'select';
 
+
+
+
+let selectCategory = document.createElement('select');
+selectCategory.className = 'filter-todo';
+selectCategory.name = 'todos';
+selectCategory.innerHTML = '<i class="fas fa-angle-down"></i>';
+
+let premOption = document.createElement('option');
+premOption.value = 'all';
+premOption.innerHTML= 'All';
+
+let deuxOption = document.createElement('option');
+deuxOption.value = 'completed';
+deuxOption.innerHTML= 'Completed';
+
+let troiOption = document.createElement('option');
+troiOption.value = 'uncompleted';
+troiOption.innerHTML= 'Uncompleted';
 
 // let btnDelete = document.createElement('button');
 // todoDiv.appendChild(btnDelete)
@@ -44,16 +65,22 @@ console.log(ulElem);
 // todoDiv.appendChild(btnChecked)
 
 
-
-
-
-
 // les appendChild 
 body.appendChild(header);
-header.appendChild (h1Elem);
+body.appendChild(divSelect);
 body.appendChild(myForm);
+body.appendChild(selectCategory);
+body.appendChild(premOption);
+body.appendChild(deuxOption);
+body.appendChild(troiOption);
+header.appendChild (h1Elem);
+divSelect.appendChild(myForm);
+divSelect.appendChild(selectCategory);
 myForm.appendChild(inputElem);
 myForm.appendChild(buttonElem);
+selectCategory.appendChild(premOption);
+selectCategory.appendChild(deuxOption);
+selectCategory.appendChild(troiOption);
 buttonElem.appendChild(icon);
 body.appendChild(divElem);
 divElem.appendChild(ulElem);
@@ -61,6 +88,6 @@ divElem.appendChild(ulElem);
 
 
 
-export {h1Elem , myForm, inputElem ,  buttonElem , icon, divElem ,ulElem } ;
+export {h1Elem , myForm, inputElem ,  buttonElem , icon, divElem ,ulElem, selectCategory, premOption, deuxOption , troiOption} ;
 
 // todoDiv.appendChild(liElem);

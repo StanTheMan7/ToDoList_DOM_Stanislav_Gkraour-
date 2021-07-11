@@ -31,7 +31,7 @@
 
 
 // import "./elements.js"
-import {h1Elem , myForm, inputElem ,  buttonElem , icon, divElem ,ulElem } from "./elements.js" 
+import {h1Elem , myForm, inputElem ,  buttonElem , icon, divElem ,ulElem ,selectCategory, premOption, deuxOption , troiOption} from "./elements.js" 
 /* -------------------------------------------------------------------------- */
 /*                               //! Selecotors                               */
 /* -------------------------------------------------------------------------- */
@@ -53,7 +53,9 @@ import {h1Elem , myForm, inputElem ,  buttonElem , icon, divElem ,ulElem } from 
 // let buttonElem= document.querySelector('.todo-button');
 // let ulElem = document.querySelector('.todo-list');
 
-
+// selectors
+let todoList = document.querySelector('.todo-list')
+let filterOpition = document.querySelector('.filter-todo');
 
 let addTodo = (event) => {
     event.preventDefault();
@@ -99,6 +101,8 @@ let addTodo = (event) => {
     })
 }
 
+
+
 buttonElem.addEventListener('click', (event)=> {
     addTodo(event);
 })
@@ -111,6 +115,43 @@ ulElem.addEventListener('click', (e)=>{
         e.target.parentElement.classList.toggle("completed")
     }
 });
+
+
+
+
+// Filtering Function  
+
+
+filterOpition.addEventListener('click', filterTodo)
+
+function filterTodo(e){
+
+    let todos = ulElem.childNodes;
+
+    console.log(todos);
+    
+    todos.forEach(function(todo){
+        switch(e.target.value){
+            case 'all': todo.style.display = 'flex';
+                break
+            case 'completed':
+                if(todo.classList.contains('completed')){
+                    todo.style.display = 'flex';
+                }else{
+                    todo.style.display = 'none';
+                } 
+                break
+            case 'uncompleted':
+                if(todo.classList.contains('completed')){
+                    todo.style.display = 'none';
+                }else{
+                    todo.style.display= 'flex';
+                }
+                break
+        }
+        
+    });
+}
 
 
 
